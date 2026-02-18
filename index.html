@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Evergreen Tours | Costa Rica</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #eef5e9;
+  color: #2e7d32;
+  line-height: 1.6;
+}
+
+
+.review {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}header {
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    url("osoperezoso.jpg");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  padding: 40px 20px;
+  text-align: center;
+  border-bottom: 4px solid #a5d6a7;
+  color: #81c784;
+}
+
+.google-btn {
+  display: inline-block;
+  padding: 14px 26px;
+  background: linear-gradient(135deg,#43a047,#2e7d32);
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 30px;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+  transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 18px rgba(0,0,0,0.35);
+}
+
+.google-btn:active {
+  transform: scale(0.96);
+}
+
+header h1 { margin: 0; font-size: 34px; }
+header p { margin-top: 10px; font-size: 18px; color: #81c784; }
+
+main { max-width: 900px; margin: auto; padding: 40px 20px; }
+
+h2 { color: #1b5e20; margin-top: 40px; }
+
+.card {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.lista li { margin-bottom: 10px; }
+
+.precio {
+  font-size: 26px;
+  font-weight: bold;
+  color: #2e7d32;
+  margin-top: 10px;
+}
+
+.dot{
+  height:10px;
+  width:10px;
+  margin:5px;
+  background:#c8e6c9;
+  border-radius:50%;
+  display:inline-block;
+  cursor:pointer;
+
+}
+
+.dot.active{
+  background:#2e7d32;
+}
+
+.dots{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:12px;
+  gap:8px;
+}
+
+.dot{
+  height:8px;
+  width:8px;
+  background:#c8e6c9;
+  border-radius:50%;
+  cursor:pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.dot.active{
+  background:#2e7d32;
+  transform: scale(1.3);
+}
+
+.boton-wsp, .boton-suscribir {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 24px;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.boton-wsp { background-color: #4caf50; color: white; }
+.boton-wsp:hover { background-color: #388e3c; }
+
+.boton-suscribir { background-color: #2e7d32; color: white; border: none; }
+.boton-suscribir:hover { background-color: #1b5e20; }
+
+button.paypal {
+  background-color: #0070ba;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button.parqueo {
+  background-color: #ff9800;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+form input, form select {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #c8e6c9;
+  font-size: 16px;
+}
+
+/* CARRUSEL */
+
+.carousel { overflow: hidden; border-radius: 12px; }
+
+.slide {
+  display: none;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.slide.active {
+  display: block;
+  opacity: 1;
+}
+
+.slide img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.descripcion {
+  margin-top: 12px;
+  font-weight: bold;
+  color: #1b5e20;
+}
+
+.carousel-buttons {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-buttons button {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.active { display: block; }
+
+footer {
+  text-align: center;
+  padding: 25px;
+  font-size: 14px;
+  color: #4e5d4e;
+  border-top: 1px solid #c8e6c9;
+  margin-top: 50px;
+}
+
+.whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  color: white;
+  font-size: 18px;
+  padding: 14px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+  z-index: 999;
+  transition: transform 0.2s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08);
+}
+
+
+
+.whatsapp-float:hover {
+  background-color: #1ebe5d;
+}
+
+</style>
+</head>
+
+<body><header>
+
+<h1 
+data-es="Evergreen Tours"
+data-en="Evergreen Tours">
+Evergreen Tours
+</h1>
+
+</p>
+Costa Rica con Venegas
+</p>
+<div style="margin-top:15px;"></div>
+
+
+</header>
+
+<main>
+ <a href="https://api.whatsapp.com/send?phone=50660364718" 
+   class="whatsapp-float" 
+   target="_blank">
+   💬
+</a> 
+  
+  
+<h2>
+Walking tour Manuel Antonio
+</h2>
+
+<div class="card">
+⏰ Duración: 2 horas<br>
+👤 Guía profesional certificado<br>
+🔭 Equipo óptico para observación de fauna<br>
+📸 Fotos incluidas<br>
+🐒 Mejores senderos para observar animales<br>
+🌿 Recorrido guiado por senderos oficiales<br>
+🐒 Observación de monos, perezosos y aves<br>
+🌊 Información sobre playas y ecosistemas<br>
+🎓 Explicación educativa sobre biodiversidad
+</div>
+
+
+
+
+<h2>Horario de los tours</h2>
+<div class="card">
+<ul class="lista">
+<li>🕖 7:00 a.m.</li>
+<li>🕥 10:30 a.m.</li>
+<li>🕐 1:15 p.m.</li>
+</ul>
+</div>
+
+<h2>Precio por Tour</h2>
+<div class="card">
+<p>Disfruta de una experiencia única en uno de los parques más hermosos de Costa Rica.</p>
+<div class="precio">$30 USD por persona</div>
+</div>
+
+<h2>Tu experiencia está en buenas manos</h2>
+<div class="card">
+✔ Guía certificado<br>
+✔ Experiencia local<br>
+✔ Equipo profesional<br>
+✔ Pago seguro<br>
+✔ Atención por WhatsApp<br>
+✔ Grupos medianos
+</div>
+
+
+<h2>Actividades Destacadas</h2>
+<div class="card">
+
+<div class="carousel">
+
+<div class="slide active">
+<img src="monorama.jpg">
+<div class="descripcion">Mono Carablanca<br>
+(Cebus imitator)
+</div>
+</div>
+
+<div class="slide">
+<img src="murcielago.jpg">
+<div class="descripcion">Murcielagos tenderos<br>
+(Uroderma billobatum)
+
+</div></div>
+
+
+<div class="slide">
+<img src="osoperezoso.jpg">
+<div class="descripcion">Perezoso de 2 dedos<br>
+(Choloepus hoffmanni)
+
+</div></div>
+
+
+<div class="slide">
+<img src="luisvenegas.jpg">
+<div class="descripcion">Final del Tour
+<br>(Mapa de Manuel Antonio)
+</div></div>
+
+
+<div class="slide">
+<img src="perezosoacostado.jpg">
+<div class="descripcion">Perezoso de 2 dedos
+<br>
+(Choloepus hoffmanni)</div></div>
+
+<div class="slide">
+<img src="averara.jpg">
+<div class="descripcion">Cuyeo, Tapacaminos<br>
+(Nyctidromus albicollis)</div></div>
+
+<div class="slide">
+<img src="tucannegro.jpg">
+<div class="descripcion">Aracari<br>
+(Pteroglossus frantzii)</div></div>
+
+<div class="slide">
+<img src="tucan.jpg">
+<div class="descripcion">Tucán Kioro<br>
+(Ramphastos ambiguos)
+</div></div>
+
+<div class="slide">
+<img src="osoperezosoraro.jpg">
+<div class="descripcion">Perezoso de 3 Dedos<br>
+(Bradypus variegatus)</div></div>
+
+
+<div class="slide">
+<img src="luistelescopio.jpg">
+<div class="descripcion">Equipo óptico 
+<br>(Guía Luis Venegas</div></div>
+
+<div class="slide">
+<img src="mariposa.jpg">
+<div class="descripcion">Mariposa<br>
+(Eurybia sp.)</div></div>
+
+
+<div class="slide">
+<img src="iguana.jpg">
+<div class="descripcion">Lagartija Jesucristo<br>
+(Basiliscus basiliscus)
+</div></div>
+
+<div class="slide">
+<img src="perezososrama.jpg">
+<div class="descripcion">Perezoso de 3 Dedos<br>
+(Bradypus variegatus)</div></div>
+
+<div class="slide">
+<img src="aveacostada.jpg"><div class="descripcion">Cuyeo, Tapacaminos<br>
+(Nyctidromus albicollis)
+</div></div>
+
+</div>
+
+<div class="dots"></div>
+
+<div class="carousel-buttons"><button id="prevBtn">⬅ Anterior</button>
+
+<button id="nextBtn">Siguiente ➡</button>
+
+</div>
+
+
+</div>
+
+<h2>Opiniones de viajeros</h2>
+<div class="card">
+
+<div class="review">
+⭐⭐⭐⭐⭐<br>
+“Amazing guide! Saw sloths and monkeys.”
+<br><strong>— Sarah 🇺🇸</strong>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐<br>
+“Luis conoce todo sobre la fauna.”
+<br><strong>— Carlos 🇪🇸</strong>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐<br>
+“Best tour in Manuel Antonio!”
+<br><strong>— Emma </strong>
+
+<a href="https://share.google/QcROkdNES5DIWlm5e" target="_blank" class="google-btn">
+  ⭐ Ver o dejar comentarios en Google
+</a>
+</div>
+
+</div>
+
+<h2>Contacto</h2>
+<div class="card">
+<p>📞 Teléfono: 6036 4718</p><a href="https://api.whatsapp.com/send?phone=50660364718&text=Hola%20quiero%20reservar%20el%20tour"
+  class="boton-wsp"
+   target="_blank">
+   💬 Reservar Tour
+</a>
+
+</div>
+
+<div class="card">
+<a href="https://g.co/kgs/8GcSiek" target="_blank">
+<button class="parqueo">Ver parqueo</button>
+</a>
+</div>
+
+<h2>Reserva tu tour</h2>
+<div class="card">
+  <form action="https://formsubmit.co/palomitasopopcorn@gmail.com" method="POST">
+
+<input type="hidden" name="_captcha" value="true">
+<input type="hidden" name="_template" value="table">
+
+<input type="hidden" name="_subject" value="Nueva Reserva Evergreen Tours">
+<input type="hidden" name="_autoresponse" value="Gracias por reservar con Evergreen Tours. Te contactaremos pronto con los detalles del tour.">
+
+<input type="text" name="nombre" placeholder="Nombre" required>
+<input type="email" name="email" placeholder="Correo electrónico" required>
+<input type="tel" name="telefono" placeholder="Número de teléfono" required>
+
+<input type="date" name="fecha" required>
+
+<select name="hora" required>
+<option value="" disabled selected>Selecciona la hora</option>
+<option value="07:00">7:00 a.m.</option>
+<option value="10:30">10:30 a.m.</option>
+<option value="13:15">1:15 p.m.</option>
+</select>
+
+<input type="number" name="personas" placeholder="Cantidad de personas" min="1" max="10" required>
+<p>Total a pagar: $<span id="total">30</span> USD</p>
+<input type="text" name="codigo" placeholder="Código del boleto" required>
+
+<button type="submit" class="boton-suscribir">Confirmar reserva</button>
+</form>
+<div style="margin-top:15px;">
+<a id="paypalLink" href="https://www.paypal.me/perezosdream/30" target="_blank">
+<button class="paypal">Pagar ahora</button>
+</a>
+</div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 · Luis Venegas · Tours Manuel Antonio · Costa Rica
+</footer>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+
+// ===== CARRUSEL =====
+let slideIndex = 0;
+const slides = document.querySelectorAll(".slide");
+const dotsContainer = document.querySelector(".dots");
+const carousel = document.querySelector(".carousel");
+
+// Crear dots
+slides.forEach((_, i) => {
+  let dot = document.createElement("span");
+  dot.classList.add("dot");
+  dot.addEventListener("click", () => {
+    slideIndex = i;
+    showSlide(slideIndex);
+  });
+  dotsContainer.appendChild(dot);
+});
+
+showSlide(slideIndex);
+
+// Swipe
+let startX = 0;
+let endX = 0;
+
+carousel.addEventListener("touchstart", e=>{
+  startX = e.touches[0].clientX;
+});
+
+carousel.addEventListener("touchend", e=>{
+  endX = e.changedTouches[0].clientX;
+  handleSwipe();
+});
+
+function handleSwipe(){
+  let diff = startX - endX;
+  if(diff > 50) nextSlide();
+  else if(diff < -50) prevSlide();
+}
+
+// Funciones carrusel
+function showSlide(index){
+  slides.forEach(s=>s.classList.remove("active"));
+  document.querySelectorAll(".dot").forEach(d=>d.classList.remove("active"));
+
+  slides[index].classList.add("active");
+  document.querySelectorAll(".dot")[index].classList.add("active");
+}
+
+function nextSlide(){
+  slideIndex++;
+  if(slideIndex >= slides.length) slideIndex = 0;
+  showSlide(slideIndex);
+}
+
+function prevSlide(){
+  slideIndex--;
+  if(slideIndex < 0) slideIndex = slides.length - 1;
+  showSlide(slideIndex);
+}
+
+document.getElementById("prevBtn").addEventListener("click", prevSlide);
+document.getElementById("nextBtn").addEventListener("click", nextSlide);
+
+
+// ===== CALCULAR TOTAL =====
+const personasInput = document.querySelector('input[name="personas"]');
+const paypalLink = document.getElementById("paypalLink");
+const totalSpan = document.getElementById("total");
+
+function actualizarPaypal(){
+  let personas = parseInt(personasInput.value) || 1;
+  let total = personas * 30;
+
+  paypalLink.href = "https://www.paypal.me/perezosdream/" + total;
+  totalSpan.textContent = total;
+}
+
+// 🔥 ESTA LÍNEA FALTABA
+personasInput.addEventListener("input", actualizarPaypal);
+
+
+
+});
+</script>
+
+</body>
+</html>
