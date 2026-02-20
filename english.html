@@ -67,11 +67,15 @@ header h1 {
 }
 
   header .subtitulo {
-  position: relative;
-  color: white;
+  position: absolute;      /* lo hace flotar dentro del header */
+  bottom: 10px;            /* ajusta la distancia desde el borde inferior */
+  left: 50%;               /* lo centra horizontalmente */
+  transform: translateX(-50%);
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   font-size: 20px;
-  margin-bottom: 10px;
+  color: white;
+  margin: 0;               /* elimina márgenes que interfieran */
   }
 
 main { max-width: 900px; margin: auto; padding: 40px 20px; }
