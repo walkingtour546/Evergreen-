@@ -75,15 +75,16 @@ header h1 {
 header p { margin-top: 10px; font-size: 18px; color: #81c784; }
           
 header .subtitulo {
-  position: relative;   /* ← quitamos absolute */
-  bottom: auto;
-  left: auto;
-  transform: none;
-  color: white;
+  position: absolute;
+  bottom: 10px;       /* lo pega cerca del borde inferior */
+  left: 50%;           /* lo centra horizontalmente */
+  transform: translateX(-50%);
   font-family: 'Poppins', sans-serif;
+  font-weight: 600;
   font-size: 20px;
-  margin-bottom: 10px;
-  }
+  color: white;
+  margin: 0;
+}
 
   .lang-btn {
   position: absolute;
