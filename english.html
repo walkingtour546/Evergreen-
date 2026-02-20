@@ -54,9 +54,21 @@ body {
 .google-btn:active {
   transform: scale(0.96);
 }
+/* HEADER */
 header {
   position: relative;
+  height: 180px; /* ajusta según tu imagen */
+  padding: 20px;
+  text-align: center;
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
+    url("osoperezoso.jpg");
+  background-size: cover;
+  background-position: center;
+  border-bottom: 4px solid #a5d6a7;
 }
+
+/* TÍTULO */
 header h1 { 
   margin: 0;
   font-size: 36px;
@@ -66,17 +78,18 @@ header h1 {
   text-shadow: 0px 4px 12px rgba(0,0,0,0.7);
 }
 
-  header .subtitulo {
-  position: absolute;      /* lo hace flotar dentro del header */
-  bottom: 10px;            /* ajusta la distancia desde el borde inferior */
-  left: 50%;               /* lo centra horizontalmente */
+/* SUBTÍTULO */
+header .subtitulo {
+  position: absolute;       /* flota dentro del header */
+  bottom: 10px;             /* distancia desde el borde inferior */
+  left: 50%;                /* centrado horizontal */
   transform: translateX(-50%);
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   font-size: 20px;
-  color: white;
-  margin: 0;               /* elimina márgenes que interfieran */
-  }
+  color: white;             /* blanco */
+  margin: 0;                /* elimina márgenes */
+}
 
 main { max-width: 900px; margin: auto; padding: 40px 20px; }
 
