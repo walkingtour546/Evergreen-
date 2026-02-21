@@ -79,16 +79,24 @@ header {
 }
 
 /* TÍTULO */
-header h1 { 
+header h1 {
   margin: 0;
   font-size: 36px;
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
   color: white;
   text-shadow: 0px 4px 12px rgba(0,0,0,0.7);
-  position: relative; /* agrega esto */
-  top: 2px;           /* baja 2 píxeles */
+  position: relative;
+  top: 2px; /* baja el título */
+  z-index: 1; /* asegura que quede detrás del botón */
 }
+
+header .lang-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10; /* siempre encima */
+  }
 
 /* SUBTÍTULO */
 header .subtitulo {
@@ -307,8 +315,8 @@ footer {
 
 <body><header>
 
-<a href="english.html" 
-   style="position:absolute; top:5px; right:5px; background:#2e7d32; color:white; padding:8px 14px; border-radius:6px; text-decoration:none;">
+<a href="english.html" class="lang-btn" 
+   style="background:#2e7d32; color:white; padding:8px 14px; border-radius:6px; text-decoration:none;">
   🇺🇸 English
 </a>
   
